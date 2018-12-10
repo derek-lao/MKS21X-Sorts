@@ -8,7 +8,7 @@ public class Sorts{
     }
     answer=answer+data[data.length-1]+"}";
     return answer;
-  };
+  }
 
   /**Selection sort of an int array.
   *Upon completion, the elements of the array will be in increasing order.
