@@ -8,19 +8,19 @@ public class Sorts{
   *Upon completion, the elements of the array will be in increasing order.
   *@param data  the elements to be sorted.
   */
-  public static void selectionSort(int[] ary){
+  public static void selectionSort(int[] data){
     int n,i,holder;
-    for(n=0;n<ary.length;n++)
+    for(n=0;n<data.length;n++)
     {
       int lowIndex=n;
-      for(i=n;i<ary.length;i++)
+      for(i=n;i<data.length;i++)
       {
-        if(ary[lowIndex]>ary[i])
+        if(data[lowIndex]>data[i])
         lowIndex=i;
       }
-      holder=ary[n];
-      ary[n]=ary[lowIndex];
-      ary[lowIndex]=ary[n];
+      holder=data[n];
+      data[n]=data[lowIndex];
+      data[lowIndex]=data[n];
     }
   }
 
@@ -29,32 +29,32 @@ public class Sorts{
   *Upon completion, the elements of the array will be in increasing order.
   *@param data  the elements to be sorted.
   */
-  public static void bubbleSort(int[] ary){
-    if (ary.length>0)
+  public static void bubbleSort(int[] data){
+    if (data.length>0)
     {
-      for(int a=ary.length;a>-1;a++)
+      for(int a=data.length;a>0;a++)
       {
-        for(int i=ary.length,n=0;i>0;i++)
+        for(int i=data.length-1,n=0;i>0;i++)
         {
-          if (ary[i]<ary[i-1])
+          if (data[i]<data[i-1])
           {
-            n=ary[i];
-            ary[i]=ary[i-1];
-            ary[i-1]=n;
+            n=data[i];
+            data[i]=data[i-1];
+            data[i-1]=n;
           }
           else
           {
             continue;
           }
-          System.out.println(ary);
+          System.out.println(data);
         }
       }
     }
   }
 
   public static void main(String[] args){
-    int[] ary={9,8,7,6,5,4,3,2,1};
-    selectionSort(ary);
+    int[] data={9,8,7,6,5,4,3,2,1};
+    selectionSort(data);
     System.out.println("success");
   }
 }
