@@ -1,7 +1,13 @@
 public class Sorts{
 
-  public String toString(){
-    return "";
+  public static String toString(int[] data){
+    String answer="{";
+    for(int i=0;i<data.length-1;i++)
+    {
+      answer=answer+data[i]+",";
+    }
+    answer=answer+data[data.length-1]+"}";
+    return answer;
   };
 
   /**Selection sort of an int array.
@@ -20,7 +26,8 @@ public class Sorts{
       }
       holder=data[n];
       data[n]=data[lowIndex];
-      data[lowIndex]=data[n];
+      data[lowIndex]=holder;
+      //System.out.println("My data is now: "+toString(data));
     }
   }
 
@@ -34,7 +41,7 @@ public class Sorts{
     {
       for(int a=data.length;a>0;a++)
       {
-        for(int i=data.length-1,n=0;i>0;i++)
+        for(int i=data.length-1-a,n=0;i>0;i++)
         {
           if (data[i]<data[i-1])
           {
@@ -53,8 +60,13 @@ public class Sorts{
   }
 
   public static void main(String[] args){
-    int[] data={9,8,7,6,5,4,3,2,1};
-    selectionSort(data);
-    System.out.println("success");
+    int[] data1={9,8,7,6,5,4,3,2,1};
+    selectionSort(data1);
+    System.out.println("Original data: {9,8,7,6,5,4,3,2,1}");
+    System.out.println("After selectionSort: "+toString(data1));
+    int[] data2={9,8,7,6,5,4,3,2,1};
+    bubbleSort(data2);
+    System.out.println("Original data: {9,8,7,6,5,4,3,2,1}");
+    System.out.println("After bubbleSort: "+toString(data2));
   }
 }
