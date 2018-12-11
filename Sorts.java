@@ -1,6 +1,8 @@
 public class Sorts{
 
   public static String toString(int[] data){
+    if(data.length==0)
+    return "{}";
     String answer="{";
     for(int i=0;i<data.length-1;i++)
     {
@@ -16,8 +18,8 @@ public class Sorts{
   */
   public static void selectionSort(int[] data){
     int n,i,holder;
-    if(data.length>0)
-    {
+    // if(data.length>0)
+    // {
       for(n=0;n<data.length;n++)
       {
         int lowIndex=n;
@@ -31,12 +33,12 @@ public class Sorts{
         data[lowIndex]=holder;
         //System.out.println("My data is now: "+toString(data));
       }
-    }
+    // }
     // although this part is unnecessary,
     // it is done to acknowledge that I know that
     // the exception is being thrown
-    else
-    throw new ArrayIndexOutOfBoundsException("Your array must have length > 1");
+    // else
+    // throw new ArrayIndexOutOfBoundsException("Your array must have length > 1");
   }
 
 
@@ -45,8 +47,8 @@ public class Sorts{
   *@param data  the elements to be sorted.
   */
   public static void bubbleSort(int[] data){
-    if (data.length>0)
-    {
+    // if (data.length>0)
+    // {
       for(int a=data.length;a>0;a--)
       {
         for(int i=data.length-1,n=0;i>0;i--)
@@ -65,12 +67,34 @@ public class Sorts{
         }
         // System.out.println("My data is now: "+toString(data));
       }
-    }
+    // }
     // although this part is unnecessary,
     // it is done to acknowledge that I know that
     // the exception is being thrown
-    else
-    throw new ArrayIndexOutOfBoundsException();
+    // else
+    // throw new ArrayIndexOutOfBoundsException();
+  }
+
+  public static void insertionSort(int[] data){
+    int holder;
+    for(int i=0;i<data.length;i++)
+    {
+      for(int n=i-1;n>-1;n--)
+      {
+        if(data[i]<data[n])
+        {
+          holder=data[n];
+          data[n]=data[i];
+          data[i]=holder;
+        }
+        else
+        {
+          n=-1;
+          // To break out of the loop, since we aren't allowed to use break
+          continue;
+        }
+      }
+    }
   }
 
   public static void main(String[] args){
@@ -107,5 +131,30 @@ public class Sorts{
       System.out.println("Error: can't do that!");
       e.printStackTrace();
     }
+    int[] data5={1,2,3,4,5,6,7,8,9};
+    System.out.println("Original data: "+toString(data5));
+    bubbleSort(data5);
+    System.out.println("After bubbleSort: "+toString(data5));
+
+
+    // testing for runtime of bubbleSort with an already sorted list
+    // vs reverse sorted list
+    int[] data6=new int[80000];
+    for(int i=0;i<data6.length;i++)
+    {
+      data6[i]=data6.length-i;
+    }
+    // System.out.println("Original data: "+toString(data6));
+    bubbleSort(data6);
+    // System.out.println("After bubbleSort: "+toString(data6));
+
+    int[] data7=new int[80000];
+    for(int i=0;i<data7.length;i++)
+    {
+      data7[i]=i;
+    }
+    // System.out.println("Original data: "+toString(data7));
+    bubbleSort(data7);
+    // System.out.println("After bubbleSort: "+toString(data7));
   }
 }
